@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { server } from "../../../config";
 import styles from '../../../styles/pages/ItemPage.module.css';
 
 export default function Item({ article }) {
@@ -18,7 +19,7 @@ export default function Item({ article }) {
 
 export const getStaticProps = async (context) => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${context.params.id}`
+    `${server}/api/items/${context.params.id}`
   )
 
   const article = await response.json()
@@ -33,7 +34,7 @@ export const getStaticProps = async (context) => {
 
 export const getStaticPaths = async () => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts`
+    `${server}/api/items/`
   )
 
   const articles = await response.json()
@@ -51,3 +52,41 @@ export const getStaticPaths = async () => {
     fallback: false
   }
 }
+
+
+
+// export const getStaticProps = async (context) => {
+//   const response = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${context.params.id}`
+//   )
+
+//   const article = await response.json()
+
+//   return {
+//     props: {
+//       article
+//     }
+//   }
+// }
+
+
+// export const getStaticPaths = async () => {
+//   const response = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts`
+//   )
+
+//   const articles = await response.json()
+//   const ids = articles.map(article => article.id)
+//   const paths = ids.map(id =>(
+//     {
+//       params: {
+//         id: id.toString()
+//       }
+//     }
+//   ))
+
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }
