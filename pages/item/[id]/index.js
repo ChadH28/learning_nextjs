@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { server } from "../../../config";
+import MetaHead from "../../../components/MetaHead";
 import styles from '../../../styles/pages/ItemPage.module.css';
 
 export default function Item({ article }) {
@@ -8,6 +9,10 @@ export default function Item({ article }) {
 
   return (
     <div className={styles.container}>
+      <MetaHead 
+        title={'Article | ' + article.title}
+        description={article.excerpt}
+      />
       <h2>{article.title}</h2>
       <p>{article.body}</p>
       <br />
@@ -39,7 +44,7 @@ export const getStaticPaths = async () => {
 
   const articles = await response.json()
   const ids = articles.map(article => article.id)
-  const paths = ids.map(id =>(
+  const paths = ids.map(id => (
     {
       params: {
         id: id.toString()

@@ -1,15 +1,9 @@
-import Head from 'next/head'
+import MetaHead from "../components/MetaHead";
 
 export default function About() {
   return (
     <div>
-      <Head>
-        <title>About</title>
-        <meta
-          name='keywords'
-          content='about page'
-        />
-      </Head>
+      <MetaHead title='About'/>
       <h1>about</h1>
     </div>
   )

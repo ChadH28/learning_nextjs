@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import ItemList from '../components/ItemList'
 import { server } from '../config'
 // import Image from 'next/image'
@@ -8,13 +7,6 @@ export default function Home({ articles }) {
   // console.log('articles: ', articles)
   return (
     <div>
-      <Head>
-        <title>Webdev highlights</title>
-        <meta
-          name='keywords'
-          content='web developement, programming'
-        />
-      </Head>
       <ItemList articles={articles} />
     </div>
   )
