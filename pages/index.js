@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import ItemList from '../components/ItemList'
 // import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import styles from '../styles/pages/Home.module.css'
 
 export default function Home({articles}) {
-  console.log('articles: ', articles)
+  // console.log('articles: ', articles)
   return (
     <div>
       <Head>
@@ -13,7 +14,7 @@ export default function Home({articles}) {
           content='web developement, programming'
         />
       </Head>
-      <h1>Highlights</h1>
+      <ItemList articles={articles}/>
     </div>
   )
 }
